@@ -98,6 +98,12 @@ where
         }
 
         // TODO: SHOULD PROBABLY RESET THE DEVICE
+        match self.send(commands::AT_commands::RST) {
+            Ok(_) => {
+                self.connection_status = true;
+            }
+            Err(_) => self.connection_status = false,
+        }
 
         // Return
         if !self.connection_status {
