@@ -391,16 +391,16 @@ where
                         found_expected_resp = true;
                     } else if cmd == commands::AT_response::WIFI_CONNECTED {
                         self.connection_status = true;
-                    //self.delay.delay_ms(2000u16);
+                    self.delay.delay_ms(2000u16);
                     } else if cmd == commands::AT_response::WIFI_DISCONNECT {
                         self.connection_status = false;
                         self.got_ip = false;
-                    //self.delay.delay_ms(2000u16);
+                    self.delay.delay_ms(2000u16);
                     } else if cmd == commands::AT_response::WIFI_GOT_IP {
                         self.got_ip = true;
                     } else {
                         found_expected_resp = false;
-                        self.delay.delay_ms(200u16);
+                        self.delay.delay_ms(2000u16);
                         self.write_serial(send_.as_bytes(), endChar).ok();
                     }
                 }
